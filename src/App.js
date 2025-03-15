@@ -1,11 +1,11 @@
 import './App.css';
 import { Button, Container, Form, Grid, Header, Icon, Segment, Statistic } from 'semantic-ui-react';
+import MainHeader from './components/MainHeaderComponent';
 
 function App() {
   return (
    <Container>
-    <Header as="h1">Budget</Header>
-
+      <MainHeader title="Budget" type="h1"/>
     <Statistic size="small">
       <Statistic.Label>Your Balance:</Statistic.Label>
       <Statistic.Value>2,550.53</Statistic.Value>
@@ -30,7 +30,7 @@ function App() {
       </Grid>
     </Segment>
 
-    <Header as="h3"> History</Header>
+    <MainHeader type="h3" title="History"/>
     <Segment color='red'>
       <Grid columns={3} textAlign='right'>
         <Grid.Row>
@@ -67,7 +67,7 @@ function App() {
         </Grid.Row>
       </Grid>
     </Segment>
-    <Header as="h3"> Add new transaction</Header>
+    <MainHeader title=" Add new transaction" type="h3"/>
     <Form unstackable>
       <Form.Group>
         <Form.Input
