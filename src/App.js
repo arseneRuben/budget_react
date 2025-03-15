@@ -1,6 +1,7 @@
 import './App.css';
-import { Button, Container, Form, Grid, Header, Icon, Segment, Statistic } from 'semantic-ui-react';
+import {  Container, Form, Grid, Icon, Segment, Statistic } from 'semantic-ui-react';
 import MainHeader from './components/MainHeaderComponent';
+import ButtonSaveOrCancel from './components/ButtonSaveOrCancelComponent';
 
 function App() {
   return (
@@ -82,11 +83,7 @@ function App() {
            iconPosition='left'
            placeholder="100.00" />
       </Form.Group>
-      <Button.Group style={{marginTop : 20}}>
-        <Button>Cancel</Button>
-        <Button.Or/>
-        <Button primary>  Ok</Button>
-      </Button.Group>
+     <ButtonSaveOrCancel/>
     </Form>
    </Container>
   );
