@@ -2,6 +2,8 @@ import './App.css';
 import {  Container, Grid, Icon, Segment, Statistic } from 'semantic-ui-react';
 import MainHeader from './components/MainHeaderComponent';
 import NewEntryFormComponent from './components/NewEntryFormComponent';
+import StatisticsLineComponent from './components/DisplaceBalanceComponent';
+import DisplaceBalance from './components/DisplaceBalanceComponent';
 
 function App() {
   return (
@@ -12,20 +14,15 @@ function App() {
       <Statistic.Value>2,550.53</Statistic.Value>
     </Statistic>
 
+
     <Segment textAlign="center"> 
       <Grid columns={2} divided> 
         <Grid.Row>
           <Grid.Column>
-            <Statistic size="tiny" color="green">
-              <Statistic.Label style={{textAlign:"left"}}>Incoming:</Statistic.Label>
-              <Statistic.Value>1,045</Statistic.Value>
-            </Statistic>
+              <DisplaceBalance size="tiny" color="green" side="side" value="1,405.50" title="Incoming"/>
           </Grid.Column>
           <Grid.Column>
-            <Statistic size='tiny' color='red'>
-                <Statistic.Label style={{textAlign:"left"}}>Expenses:</Statistic.Label>
-                <Statistic.Value>623.50</Statistic.Value>
-            </Statistic>
+              <DisplaceBalance size="tiny" color="red" side="left" value="623.50" title="Expenses"/>
           </Grid.Column>
         </Grid.Row>
       </Grid>
