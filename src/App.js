@@ -4,25 +4,20 @@ import MainHeader from './components/MainHeaderComponent';
 import NewEntryFormComponent from './components/NewEntryFormComponent';
 import DisplaceBalance from './components/DisplaceBalanceComponent';
 import DisplaceBalances from './components/DisplaceBalancesComponent';
-import EntryLine from './components/EntryLineComponent';
+import { useState } from 'react';
+import EntryLines from './components/EntryLinesComponent';
 
 function App() {
+  const [entries, setEntries] = useState(initialEntries);
   return (
    <Container>
-      <MainHeader title="Budget" type="h1"/>
-   
+    <MainHeader title="Budget" type="h1"/>
     <DisplaceBalance size="small" color="black" side="side" value="2,550.53" title="Your Balance"/>
-
     <DisplaceBalances/>
 
     <MainHeader type="h3" title="History"/>
-    <EntryLine description=" Income " value="10.00"  isExpense = {true}/>
-    <EntryLine description=" Something else" value="2.00"  isExpense={false}/>
-    <EntryLine description=" Something " value="100.00"  isExpense={true}/>
-    <EntryLine description=" Salary " value="1000.00"  isExpense = {false}/>
+    <EntryLines entries={entries}/>
 
-    
-    
     <MainHeader title=" Add new transaction" type="h3"/>
     <NewEntryFormComponent />
    </Container>
@@ -30,3 +25,35 @@ function App() {
 }
 
 export default App;
+var initialEntries=[
+  {
+    description:"Work income",
+    value : "1000",
+    isExpense : false
+  },
+  {
+    description:"Water bill",
+    value : "20,20",
+    isExpense : true
+  },
+  {
+    description:"Baby shower",
+    value : "600",
+    isExpense : false
+  },
+  {
+    description:"Rent",
+    value : "300",
+    isExpense : true
+  },
+  {
+    description:"Fruits",
+    value : "40",
+    isExpense : true
+  },
+  {
+    description:"Power Bill",
+    value : "60,6",
+    isExpense : true
+  },
+]
