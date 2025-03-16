@@ -7,9 +7,11 @@ import DisplaceBalances from './components/DisplaceBalancesComponent';
 import { useEffect, useState } from 'react';
 import EntryLines from './components/EntryLinesComponent';
 import EditModal from './components/EditModalComponent';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [entries, setEntries] = useState(initialEntries);
+  const entries = useSelector((state) => state.entries)
+
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [isExpense, setIsExpense] = useState(true)
@@ -28,7 +30,7 @@ function App() {
       newEntries[index].description = description;
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
-      setEntries(newEntries);
+    //  setEntries(newEntries);
       resetEntries()
     }
     // eslint-disable-next-line 
@@ -50,15 +52,16 @@ function App() {
     setIncomes(incomes);
   }, entries)
 
+
+
+
+  
+
+
   function resetEntries(){
     setDescription('')
     setValue('')
     setIsExpense(true)
-  }
-  function deleteEntry(id){
-    console.log(id)
-    const result = entries.filter(entry => entry.id!==id);
-    setEntries(result)
   }
 
   function editEntry(id){
@@ -78,61 +81,24 @@ function App() {
 
   function addEntry() {
     const result = entries.concat({id:entries.length+1, description, value, isExpense});
-    setEntries(result);
+    //setEntries(result);
   }
   return (
-   <Container>
-    <MainHeader title="Budget" type="h1"/>
-    <DisplaceBalance size="small" color="black" side="side" value={balance} title="Your Balance"/>
-    <DisplaceBalances incomes={incomes} expenses={expenses}/>
+    <Container>
+      <MainHeader title="Budget" type="h1"/>
+      <DisplaceBalance size="small" color="black" side="side" value={balance} title="Your Balance"/>
+      <DisplaceBalances incomes={incomes} expenses={expenses}/>
 
-    <MainHeader type="h3" title="History"/>
-    <EntryLines entries={entries} deleteEntry={deleteEntry} editEntry={editEntry}/>
+      <MainHeader type="h3" title="History"/>
+      <EntryLines entries={entries}  editEntry={editEntry}/>
 
-    <MainHeader title=" Add new transaction" type="h3"/>
-    <NewEntryFormComponent  addEntry={addEntry} description={description} setDescription={setDescription} value={value} setValue={setValue} isExpense={isExpense} setIsExpense={setIsExpense}/>
-    <EditModal  isOpen={isOpen}  setIsOpen={setIsOpen} addEntry={addEntry} description={description} setDescription={setDescription} value={value} setValue={setValue} isExpense={isExpense} setIsExpense={setIsExpense}/>
-    
-   </Container>
+      <MainHeader title=" Add new transaction" type="h3"/>
+      <NewEntryFormComponent  addEntry={addEntry} description={description} setDescription={setDescription} value={value} setValue={setValue} isExpense={isExpense} setIsExpense={setIsExpense}/>
+      <EditModal  isOpen={isOpen}  setIsOpen={setIsOpen} addEntry={addEntry} description={description} setDescription={setDescription} value={value} setValue={setValue} isExpense={isExpense} setIsExpense={setIsExpense}/>
+      
+    </Container>
+   
   );
 }
 
 export default App;
-var initialEntries=[
-  {
-    id:"1",
-    description:"Work income",
-    value : 1000,
-    isExpense : false
-  },
-  {
-    id:"5",
-    description:"Water bill",
-    value : 200,
-    isExpense : true
-  },
-  {
-    id:"6",
-    description:"Baby shower",
-    value : 600,
-    isExpense : false
-  },
-  {
-    id:"2",
-    description:"Rent",
-    value : 300,
-    isExpense : true
-  },
-  {
-    id:"3",
-    description:"Fruits",
-    value : 40,
-    isExpense : true
-  },
-  {
-    id:"4",
-    description:"Power Bill",
-    value : 606,
-    isExpense : true
-  },
-]
